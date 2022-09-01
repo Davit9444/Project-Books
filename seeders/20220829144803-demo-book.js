@@ -11,7 +11,7 @@ module.exports = {
             updatedAt: new Date()
           },
           {
-            name: "C++",
+            name: "C#",
             genre: "Programming Languages ",
             author: "Stephen Prata",
             createdAt: new Date(),

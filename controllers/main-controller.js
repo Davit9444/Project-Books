@@ -6,10 +6,17 @@ const { getAllBooks,
         deleteBook,
         createGenre,
         updateGenre,
-        deleteGenre, createAuthor, updateAuthor, deleteAuthor
+        deleteGenre,
+        createAuthor,
+        updateAuthor,
+        deleteAuthor, getAllBookHistory
 } = require('../services/main-service');
 
+async function getHistory(req, res) {
+    const books = await getAllBookHistory();
 
+    return res.send(books);
+}
 async function getBooks(req, res) {
     const books = await getAllBooks();
 
@@ -41,7 +48,7 @@ async function addBooks(req, res) {
 async function upBook(req, res) {
     const book = req.body;
     await updateBook(book);
-    console.log(book);
+    //console.log(book);
 
     return res.send({
         success: true,
@@ -123,6 +130,7 @@ async function deleteAuthors(req, res) {
 
 
 module.exports = {
+    getHistory,
     getBooks,
     getAuthors,
     getGenres,
