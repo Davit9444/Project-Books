@@ -2,7 +2,14 @@ const { Book } = require('../models');
 const { Author } = require('../models');
 const { Genre } = require('../models');
 const {where} = require("sequelize");
+const {BookHistory} = require('../models');
+//const {Sequelize, sequelize, transaction} = require('sequelize');
 
+async function getAllBookHistory() {
+    const books = await BookHistory.findAll();
+
+    return books;
+}
 async function getAllBooks() {
     const books = await Book.findAll();
 
@@ -31,15 +38,27 @@ async function createBook(book) {
     }
     const newBook = await Book.create(info);
 
+
     return newBook;
 }
 
 async function updateBook(book) {
 
     const id = book.id;
-    const updateBooks  = await Book.update(book, {where :{ id: id}});
+    const oldBook = await Book.findOne({where: {id}});
+    const books = {
+        name: book.name,
+        author: book.author,
+        genre: book.genre
+    }
+    delete oldBook.dataValues.id;
+
+    await BookHistory.create(oldBook.dataValues);
+
+    const updateBooks  = await Book.update(books, {where :{ id: id}});
 
     return updateBooks;
+
 }
 
 async function deleteBook(book) {
@@ -105,6 +124,7 @@ async function deleteAuthor(book) {
 
 
 module.exports = {
+    getAllBookHistory,
     getAllBooks,
     getAllAuthors,
     getAllGenres,

@@ -15,6 +15,7 @@ router.delete('/genres/:id', MainController.deleteGenres);
 router.post('/authors', MainController.addAuthors);
 router.put('/authors', MainController.upAuthors);
 router.delete('/authors/:id', MainController.deleteAuthors);
+router.get('/histories', MainController.getHistory);
 
 
 

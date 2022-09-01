@@ -1,7 +1,6 @@
 {
   "name": "project-books",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "scripts": {
     "dev": "nodemon --require dotenv/config app.js"
@@ -16,8 +15,18 @@
   "dependencies": {
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "npm": "^8.18.0",
     "pg": "^8.8.0",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.21.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Davit9444/Project-Books.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Davit9444/Project-Books/issues"
+  },
+  "homepage": "https://github.com/Davit9444/Project-Books#readme",
+  "description": ""
 }
